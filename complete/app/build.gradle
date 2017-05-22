@@ -1,0 +1,17 @@
+//tag::appversiongroup[]
+version "0.1"
+group "app"
+//end::appversiongroup[]
+dependencies {
+    //tag::dependency_datastore_rest_client[]
+    testCompile 'org.grails:grails-datastore-rest-client'
+    //end::dependency_datastore_rest_client[]
+}
+
+// tag::grailsplugins[]
+grails {
+    plugins {
+        compile project(':plugin')
+    }
+}
+// end::grailsplugins[]

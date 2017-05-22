@@ -1,0 +1,9 @@
+//tag::pluginversiongroup[]
+version "0.1"
+group "plugin"
+//end::pluginversiongroup[]
+dependencies {
+    // tag::dependencygroovylib[]
+    compile project(':groovylib')
+    // end::dependencygroovylib[]
+}

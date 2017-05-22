@@ -1,1 +1,3 @@
-rootProject.name='grails-multi-project-build'
+include 'app'
+include 'plugin'
+include 'groovylib'

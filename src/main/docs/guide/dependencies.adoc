@@ -1,0 +1,46 @@
+We want to configure the next dependencies:
+
+image::dependencies.png[]
+
+`app` depends on `plugin`
+
+[source, groovy]
+.app/build.gradle
+----
+dependencies {
+    ...
+    compile project(':plugin')
+}
+----
+
+`plugin` depends on `groovylib`
+
+[source, groovy]
+.plugin/build.gradle
+----
+dependencies {
+  ...
+include::{sourceDir}/plugin/build.gradle[tag=dependencygroovylib]
+}
+----
+
+== Hot Reloading
+
+To get hot reloading for changes made in the Grails Plugin, replace the configuration
+
+[source, groovy]
+.app/build.gradle
+----
+dependencies {
+    ...
+    compile project(':plugin')
+}
+----
+
+with:
+
+[source, groovy]
+.app/build.gradle
+----
+include::{sourceDir}/app/build.gradle[tag=grailsplugins]
+----
