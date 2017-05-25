@@ -15,7 +15,7 @@ include::{sourceDir}/gradle/geb.gradle[indent=0]
 Then you can apply these dependencies to a particular project:
 
 [source, groovy]
-.gradle/geb.gradle
+.app/build.gradle
 ----
 apply from: "${rootProject.projectDir}/gradle/geb.gradle"
 ----
