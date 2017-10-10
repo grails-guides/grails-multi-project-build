@@ -1,7 +1,7 @@
 package app
 
 import demo.OCI
-import grails.test.mixin.integration.Integration
+import grails.testing.mixin.integration.Integration
 import spock.lang.Specification
 import grails.plugins.rest.client.RestBuilder
 
