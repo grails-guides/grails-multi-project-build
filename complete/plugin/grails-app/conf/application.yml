@@ -2,9 +2,6 @@ grails:
     profile: plugin
     codegen:
         defaultPackage: plugin
-    spring:
-        transactionManagement:
-            proxies: false
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events
