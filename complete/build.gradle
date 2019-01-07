@@ -49,7 +49,15 @@ subprojects { project ->
         }
 
         if ( isGrailsApp ) {
+            configurations {
+                developmentOnly
+                runtimeClasspath {
+                    extendsFrom developmentOnly
+                }
+            }
+
             dependencies {
+                developmentOnly("org.springframework.boot:spring-boot-devtools")
                 compile "org.springframework.boot:spring-boot-starter-actuator"
                 compile "org.springframework.boot:spring-boot-starter-tomcat"
                 compile "org.grails:grails-dependencies"
