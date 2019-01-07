@@ -134,13 +134,4 @@ subprojects { project ->
             }
         }
     }
-
-    afterEvaluate {
-        if ( isGrailsProject ) {
-            assets {
-                minifyJs = true
-                minifyCss = true
-            }
-        }
-    }
 }

@@ -11,6 +11,11 @@ dependencies {
     //end::dependency_datastore_rest_client[]
 }
 
+assets {
+    minifyJs = true
+    minifyCss = true
+}
+
 // tag::grailsplugins[]
 grails {
     plugins {
