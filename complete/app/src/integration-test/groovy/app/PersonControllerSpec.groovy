@@ -19,13 +19,13 @@ class PersonControllerSpec extends Specification {
 
     @OnceBefore
     void init() {
-        final String baseUrl = "http://localhost:$serverPort"
+        String baseUrl = "http://localhost:$serverPort"
         this.client = HttpClient.create(new URL(baseUrl))
     }
 
     def '/person endpoints return one of the names'() {
         when:
-        HttpResponse<String> resp = client.toBlocking().exchange(HttpRequest.GET("/person"), String)
+        HttpResponse<String> resp = client.toBlocking().exchange(HttpRequest.GET('/person'), String)
 
         then:
         OCI.PEOPLE.contains resp.body()

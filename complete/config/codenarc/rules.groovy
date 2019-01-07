@@ -261,20 +261,20 @@ ruleset {
     // rulesets/junit.xml
     ChainedTest 
     CoupledTestCase 
-    JUnitAssertAlwaysFails 
-    JUnitAssertAlwaysSucceeds 
-    JUnitFailWithoutMessage 
-    JUnitLostTest 
-    JUnitPublicField 
-    JUnitPublicNonTestMethod 
-    JUnitPublicProperty 
-    JUnitSetUpCallsSuper 
-    JUnitStyleAssertions 
-    JUnitTearDownCallsSuper 
-    JUnitTestMethodWithoutAssert 
-    JUnitUnnecessarySetUp 
-    JUnitUnnecessaryTearDown 
-    JUnitUnnecessaryThrowsException 
+//    JUnitAssertAlwaysFails
+//    JUnitAssertAlwaysSucceeds
+//    JUnitFailWithoutMessage
+//    JUnitLostTest
+//    JUnitPublicField
+//    JUnitPublicNonTestMethod
+//    JUnitPublicProperty
+//    JUnitSetUpCallsSuper
+//    JUnitStyleAssertions
+//    JUnitTearDownCallsSuper
+//    JUnitTestMethodWithoutAssert
+//    JUnitUnnecessarySetUp
+//    JUnitUnnecessaryTearDown
+//    JUnitUnnecessaryThrowsException
     SpockIgnoreRestUsed 
     UnnecessaryFail 
     UseAssertEqualsInsteadOfAssertTrue 
@@ -304,7 +304,7 @@ ruleset {
     FieldName 
     InterfaceName 
     InterfaceNameSameAsSuperInterface 
-    MethodName 
+    //MethodName
     ObjectOverrideMisspelledMethodName 
     PackageName 
     PackageNameMatchesFilePath 
