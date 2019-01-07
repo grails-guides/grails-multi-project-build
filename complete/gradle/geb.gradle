@@ -1,14 +1,12 @@
-project.ext.seleniumVersion = '2.53.1'
-project.ext.htmlUnitVersion = '2.18'
-project.ext.htmlUnitDriverVersion = '2.47.1'
-project.ext.phantomJsDriverVersion = '1.3.0'
-
 dependencies {
-    testCompile 'org.grails.plugins:geb'
-    testRuntime "net.sourceforge.htmlunit:htmlunit:$htmlUnitVersion"
-    testRuntime "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
-    testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:$htmlUnitDriverVersion"
-    testCompile "com.codeborne:phantomjsdriver:$phantomJsDriverVersion"
-    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
-    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+
+    testCompile "org.grails.plugins:geb"
+    testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+    testRuntime "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testRuntime "org.seleniumhq.selenium:selenium-safari-driver:$seleniumSafariDriverVersion"
+
+    testCompile "org.seleniumhq.selenium:selenium-remote-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-api:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
+
 }
