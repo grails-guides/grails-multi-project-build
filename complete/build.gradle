@@ -117,7 +117,7 @@ subprojects { project ->
 
         if ( isGrailsPlugin ) {
             // enable if you wish to package this plugin as a standalone application
-            bootRepackage.enabled = false
+            bootJar.enabled = false
             grailsPublish {
                 // TODO: Provide values here
                 user = 'user'
