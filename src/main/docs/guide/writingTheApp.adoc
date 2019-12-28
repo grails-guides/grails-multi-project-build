@@ -1,4 +1,4 @@
-include::{commondir}/common-gradle.adoc[]
+Grails uses the https://gradle.org/[Gradle Build System] for build related tasks such as compilation, runnings tests and producing binary distrubutions of your project.
 
 Gradle powerful support for multi-project builds is one of Gradle's unique selling points.
 
