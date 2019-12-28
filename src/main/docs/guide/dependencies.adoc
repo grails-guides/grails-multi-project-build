@@ -2,7 +2,9 @@ We want to configure the next dependencies:
 
 image::dependencies.png[]
 
-`app` depends on `plugin`
+## App dependencies
+
+`app` depends on `plugin`. You can express it in the `dependencies` block such as:
 
 [source, groovy]
 .app/build.gradle
@@ -12,6 +14,16 @@ dependencies {
     compile project(':plugin')
 }
 ----
+
+or with:
+
+[source, groovy]
+.app/build.gradle
+----
+include::{sourceDir}/app/build.gradle[tag=grailsplugins]
+----
+
+## Plugin dependencies
 
 `plugin` depends on `groovylib`
 
@@ -22,25 +34,4 @@ dependencies {
   ...
 include::{sourceDir}/plugin/build.gradle[tag=dependencygroovylib]
 }
-----
-
-== Hot Reloading
-
-To get hot reloading for changes made in the Grails Plugin, replace the configuration
-
-[source, groovy]
-.app/build.gradle
-----
-dependencies {
-    ...
-    compile project(':plugin')
-}
-----
-
-with:
-
-[source, groovy]
-.app/build.gradle
-----
-include::{sourceDir}/app/build.gradle[tag=grailsplugins]
 ----
