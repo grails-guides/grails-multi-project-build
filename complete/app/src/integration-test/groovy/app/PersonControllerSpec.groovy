@@ -4,7 +4,6 @@ import demo.OCI
 import grails.testing.mixin.integration.Integration
 import grails.testing.spock.OnceBefore
 import io.micronaut.http.HttpRequest
-import io.micronaut.http.HttpResponse
 import io.micronaut.http.client.HttpClient
 import spock.lang.AutoCleanup
 import spock.lang.Shared
@@ -25,9 +24,9 @@ class PersonControllerSpec extends Specification {
 
     def '/person endpoints return one of the names'() {
         when:
-        HttpResponse<String> resp = client.toBlocking().exchange(HttpRequest.GET('/person'), String)
+        String text = client.toBlocking().retrieve(HttpRequest.GET('/person'), String)
 
         then:
-        OCI.PEOPLE.contains resp.body()
+        OCI.PEOPLE.contains text
     }
 }
