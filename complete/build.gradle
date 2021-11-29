@@ -6,9 +6,7 @@ buildscript {
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
-        classpath "org.grails.plugins:hibernate5:7.0.0"
-        classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:2.1"
-
+        classpath "org.grails.plugins:hibernate5:7.1.0"
     }
 }
 
@@ -31,12 +29,6 @@ subprojects { project ->
             apply plugin:"org.grails.grails-web"
             apply plugin:"org.grails.grails-gsp"
             apply plugin:"com.bertramlabs.asset-pipeline"
-            apply plugin:"com.github.erdi.webdriver-binaries"
-        }
-
-        if ( isGrailsPlugin ) {
-            apply plugin:"org.grails.grails-plugin"
-            apply plugin:"org.grails.grails-plugin-publish"
         }
 
         repositories {
@@ -52,9 +44,9 @@ subprojects { project ->
         }
 
         dependencies {
-            compile "org.springframework.boot:spring-boot-starter-logging"
-            compile "org.springframework.boot:spring-boot-autoconfigure"
-            compile "org.grails:grails-core"
+            implementation "org.springframework.boot:spring-boot-starter-logging"
+            implementation "org.springframework.boot:spring-boot-autoconfigure"
+            implementation "org.grails:grails-core"
             console "org.grails:grails-console"
         }
 
@@ -68,22 +60,22 @@ subprojects { project ->
 
             dependencies {
                 developmentOnly("org.springframework.boot:spring-boot-devtools")
-                compile "org.springframework.boot:spring-boot-starter-actuator"
-                compile "org.springframework.boot:spring-boot-starter-tomcat"
-                compile "org.grails:grails-dependencies"
-                compile "org.grails:grails-web-boot"
-                compile "org.grails.plugins:cache"
-                compile "org.grails.plugins:scaffolding"
-                compile "org.grails.plugins:hibernate5"
-                compile "org.hibernate:hibernate-core:5.4.0.Final"
-                compile "io.micronaut:micronaut-inject-groovy"
+                implementation "org.springframework.boot:spring-boot-starter-actuator"
+                implementation "org.springframework.boot:spring-boot-starter-tomcat"
+                implementation "org.grails:grails-dependencies"
+                implementation "org.grails:grails-web-boot"
+                implementation "org.grails.plugins:cache"
+                implementation "org.grails.plugins:scaffolding"
+                implementation "org.grails.plugins:hibernate5"
+                implementation "org.hibernate:hibernate-core:5.4.0.Final"
+                implementation "io.micronaut:micronaut-inject-groovy"
                 profile "org.grails.profiles:web"
-                runtime "org.glassfish.web:el-impl:2.1.2-b03"
-                runtime "com.h2database:h2"
-                runtime "org.apache.tomcat:tomcat-jdbc"
-                runtime "com.bertramlabs.plugins:asset-pipeline-grails:$assetPipelineVersion"
-                testCompile "org.grails:grails-gorm-testing-support"
-                testCompile "org.grails:grails-web-testing-support"
+                runtimeOnly "org.glassfish.web:el-impl:2.1.2-b03"
+                runtimeOnly "com.h2database:h2"
+                runtimeOnly "org.apache.tomcat:tomcat-jdbc"
+                runtimeOnly "com.bertramlabs.plugins:asset-pipeline-grails:$assetPipelineVersion"
+                testImplementation "org.grails:grails-gorm-testing-support"
+                testImplementation "org.grails:grails-web-testing-support"
             }
             apply from: "${rootProject.projectDir}/gradle/geb.gradle"
         }
@@ -91,9 +83,9 @@ subprojects { project ->
         if ( isGrailsPlugin ) {
             dependencies {
                 profile "org.grails.profiles:plugin"
-                provided "org.grails:grails-plugin-services"
-                provided "org.grails:grails-plugin-domain-class"
-                testCompile "org.grails:grails-gorm-testing-support"
+                implementation "org.grails:grails-plugin-services"
+                implementation "org.grails:grails-plugin-domain-class"
+                testImplementation "org.grails:grails-gorm-testing-support"
             }
         }
 
@@ -107,16 +99,10 @@ subprojects { project ->
         }
 
         if (isGrailsApp) {
-            webdriverBinaries {
-                chromedriver "$chromeDriverVersion"
-                geckodriver "$geckodriverVersion"
-            }
 
             tasks.withType(Test) {
                 systemProperty "geb.env", System.getProperty('geb.env')
                 systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-                systemProperty "webdriver.chrome.driver", System.getProperty('webdriver.chrome.driver')
-                systemProperty "webdriver.gecko.driver", System.getProperty('webdriver.gecko.driver')
             }
         }
 
@@ -140,3 +126,5 @@ subprojects { project ->
         }
     }
 }
+
+tasks.withType(Test) { useJUnitPlatform() }
