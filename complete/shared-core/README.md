@@ -1,0 +1,23 @@
+## Grails 8.0.0-SNAPSHOT Documentation
+
+- [User Guide](https://grails.apache.org/docs/snapshot/guide/index.html)
+- [API Reference](https://grails.apache.org/docs/snapshot/api/index.html)
+- [Grails Guides](https://guides.grails.org/index.html)
+---
+
+## Feature asset-pipeline-grails documentation
+
+- [Grails Asset Pipeline documentation](https://github.com/wondrify/asset-pipeline#readme)
+
+## Feature mockito documentation
+
+- [https://site.mockito.org](https://site.mockito.org)
+
+## Feature scaffolding documentation
+
+- [Grails Scaffolding documentation](https://grails.apache.org/docs/snapshot/guide/scaffolding.html)
+
+## Feature spring-boot-devtools documentation
+
+- [Grails SpringBoot Developer Tools documentation](https://docs.spring.io/spring-boot/reference/using/devtools.html)
+
