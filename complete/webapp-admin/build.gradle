@@ -83,7 +83,6 @@ repositories {
 
 dependencies {
     profile "org.apache.grails.profiles:web"
-    implementation project(':shared-core')
     developmentOnly "org.springframework.boot:spring-boot-devtools" // Spring Boot DevTools may cause performance slowdowns or compatibility issues on larger applications
     testAndDevelopmentOnly "org.webjars.npm:bootstrap"
     testAndDevelopmentOnly "org.webjars.npm:bootstrap-icons"
@@ -122,6 +121,15 @@ dependencies {
 }
 
 compileJava.options.release = 21
+
+// Consume the shared-core plugin through the Grails plugin block (not a plain
+// dependencies entry) so bootRun can request its exploded variant and hot-reload
+// plugin changes in development. See the Dev Reload chapter.
+grails {
+    plugins {
+        implementation project(':shared-core')
+    }
+}
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
