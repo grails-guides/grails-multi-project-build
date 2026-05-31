@@ -1,0 +1,45 @@
+name: Grails 8 CI
+
+on:
+  push:
+    branches: [ grails8 ]
+  pull_request:
+    branches: [ grails8 ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: complete (test + integrationTest)
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      # complete/ is a single Gradle build with three subprojects
+      # (shared-core plugin + webapp-admin + webapp-customer); this runs the
+      # unit (test) and @Integration HTTP (integrationTest) specs for all three.
+      # initial/ is intentionally empty (forge URLs only), so it has no CI job.
+      - name: Unit + integration tests (all modules)
+        working-directory: complete
+        run: |
+          chmod +x gradlew
+          ./gradlew test integrationTest --console=plain --stacktrace
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: complete/**/build/reports/tests/
+          if-no-files-found: ignore
